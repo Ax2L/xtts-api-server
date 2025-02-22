@@ -1,0 +1,14 @@
+[Unit]
+Description=XTTS API Server
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=10
+WorkingDirectory=/home/sewa/admin/.apps/xtts-api-server
+ExecStart=/home/sewa/admin/.apps/xtts-api-server/run.sh
+
+[Install]
+WantedBy=multi-user.target 
