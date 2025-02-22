@@ -1,0 +1,31 @@
+version: '3.4'
+
+services:
+  xttsapiserver:
+    image: xttsapiserver
+    env_file: .env
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${HOST_PORT:-8020}:${CONTAINER_PORT:-8020}"
+    volumes:
+      - ./output:/output
+      - ./speakers:/speakers
+      - ./xtts_models:/xtts_models
+    environment:
+      NVIDIA_VISIBLE_DEVICES: all
+      NVIDIA_DRIVER_CAPABILITIES: all
+    runtime: nvidia
+    devices:
+      - /dev/nvidia0
+      - /dev/nvidiactl
+      - /dev/nvidia-uvm
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    restart: always 
