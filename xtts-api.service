@@ -7,8 +7,8 @@ StartLimitIntervalSec=0
 Type=simple
 Restart=always
 RestartSec=10
-WorkingDirectory=/home/sewa/admin/.apps/xtts-api-server
-ExecStart=/home/sewa/admin/.apps/xtts-api-server/run.sh
+WorkingDirectory=/home/sewa/installed/xtts-api-server
+ExecStart=/home/sewa/installed/xtts-api-server/run.sh
 
 [Install]
 WantedBy=multi-user.target 
